@@ -43,10 +43,6 @@ The app journey covers:
   </tr>
 </table>
 
-## Run or publish
-
-This is a static site and does not require a build step. Open `index.html` in a browser to view it locally. GitHub Pages publishes the live version from the `main` branch root.
-
 ## Design source
 
 The mobile screens were created in the Savora Figma design file and exported for this repository.
