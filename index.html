@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#193c31">
+  <meta name="description" content="Explore the Savora food ordering app concept, from restaurant discovery to delivery tracking.">
+  <title>Savora — Food, made delightful</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --forest: #193c31;
+      --forest-2: #244d3e;
+      --cream: #fff8f0;
+      --paper: #fffdf9;
+      --ink: #2c241e;
+      --muted: #8a7d71;
+      --orange: #ff6738;
+      --orange-light: #fff0e6;
+      --line: #eadfd4;
+      --shadow: 0 24px 70px rgba(31, 43, 34, .16);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--cream); color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    button { font: inherit; }
+    .site-header { height: 76px; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(22px, 6vw, 92px); background: var(--forest); color: white; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; color: inherit; text-decoration: none; font-weight: 760; letter-spacing: -.04em; font-size: 21px; }
+    .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 12px; background: var(--orange); font-family: Georgia, serif; font-size: 22px; font-style: italic; }
+    .header-note { color: rgba(255,255,255,.7); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+    main { min-height: calc(100vh - 76px); background: radial-gradient(ellipse at 81% 13%, rgba(255, 226, 203, .6), transparent 34%), var(--cream); padding: 56px clamp(20px, 6vw, 92px) 42px; }
+    .intro { max-width: 1220px; margin: 0 auto 36px; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 24px; }
+    .eyebrow { margin: 0 0 14px; color: var(--orange); font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+    h1 { max-width: 680px; margin: 0; color: var(--forest); font-size: clamp(38px, 5vw, 66px); line-height: .99; letter-spacing: -.065em; }
+    .lede { max-width: 590px; margin: 18px 0 0; color: #72665a; font-size: 15px; line-height: 1.7; }
+    .screen-count { align-self: end; padding-bottom: 5px; color: var(--muted); font-size: 13px; white-space: nowrap; }
+    .screen-count strong { color: var(--forest); font-size: 20px; letter-spacing: -.04em; }
+    .preview-shell { max-width: 1220px; margin: auto; display: grid; grid-template-columns: minmax(290px, .88fr) minmax(340px, 1.12fr); overflow: hidden; border: 1px solid rgba(25,60,49,.1); border-radius: 28px; background: var(--paper); box-shadow: var(--shadow); }
+    .preview-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(28px, 5vw, 62px); background: var(--forest); color: white; }
+    .preview-copy .eyebrow { color: #ffb08e; }
+    .preview-copy h2 { max-width: 380px; margin: 0; font-size: clamp(28px, 3.3vw, 43px); line-height: 1.06; letter-spacing: -.055em; }
+    .preview-copy p { max-width: 390px; margin: 17px 0 0; color: rgba(255,255,255,.72); font-size: 14px; line-height: 1.7; }
+    .flow-label { display: inline-flex; align-items: center; gap: 8px; margin-top: 26px; color: #ffd5c1; font-size: 12px; font-weight: 650; }
+    .flow-label::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 5px rgba(255,103,56,.15); }
+    .preview-stage { min-height: 610px; display: flex; align-items: center; justify-content: center; gap: clamp(20px, 5vw, 66px); padding: 42px 38px; background: linear-gradient(145deg, #fffdf9, #fff5eb); }
+    .device { position: relative; width: min(250px, 55vw); padding: 8px; border: 1px solid #d8d0c8; border-radius: 38px; background: #211f1c; box-shadow: 0 20px 45px rgba(39,31,24,.22), inset 0 0 0 1px rgba(255,255,255,.3); }
+    .device::before { content: ""; position: absolute; z-index: 2; top: 12px; left: 50%; width: 64px; height: 17px; transform: translateX(-50%); border-radius: 0 0 12px 12px; background: #211f1c; }
+    .device-screen { display: block; width: 100%; aspect-ratio: 360 / 800; border-radius: 30px; background: #fff8f0; object-fit: cover; }
+    .device-gloss { position: absolute; inset: 8px; pointer-events: none; border: 1px solid rgba(255,255,255,.22); border-radius: 31px; }
+    .stage-controls { width: 150px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+    .stage-step { color: var(--muted); font-size: 11px; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
+    .stage-title { margin: 0; color: var(--forest); font-size: 21px; line-height: 1.15; letter-spacing: -.04em; }
+    .stage-arrows { display: flex; gap: 8px; margin-top: 5px; }
+    .arrow { width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 50%; color: var(--forest); background: white; cursor: pointer; transition: .18s ease; }
+    .arrow:hover { transform: translateY(-2px); border-color: var(--orange); color: var(--orange); }
+    .arrow:focus-visible, .screen-chip:focus-visible, .filter:focus-visible { outline: 3px solid rgba(255,103,56,.35); outline-offset: 3px; }
+    .gallery { max-width: 1220px; margin: 30px auto 0; }
+    .gallery-head { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 14px; }
+    .gallery-head h2 { margin: 0; color: var(--forest); font-size: 16px; letter-spacing: -.03em; }
+    .filters { display: flex; gap: 7px; overflow-x: auto; scrollbar-width: none; }
+    .filters::-webkit-scrollbar, .screen-list::-webkit-scrollbar { display: none; }
+    .filter { flex: 0 0 auto; padding: 8px 13px; border: 1px solid var(--line); border-radius: 999px; color: #75695f; background: rgba(255,255,255,.72); font-size: 11px; font-weight: 650; cursor: pointer; }
+    .filter.active { border-color: var(--forest); color: white; background: var(--forest); }
+    .screen-list { display: flex; gap: 11px; overflow-x: auto; padding: 2px 2px 14px; scrollbar-width: thin; scrollbar-color: #d9c8ba transparent; }
+    .screen-chip { flex: 0 0 154px; display: flex; align-items: center; gap: 10px; padding: 8px; border: 1px solid transparent; border-radius: 14px; color: var(--ink); text-align: left; background: rgba(255,255,255,.7); cursor: pointer; transition: .18s ease; }
+    .screen-chip:hover { transform: translateY(-2px); background: white; }
+    .screen-chip.active { border-color: rgba(255,103,56,.55); background: #fff; box-shadow: 0 5px 18px rgba(69,44,25,.07); }
+    .chip-thumb { width: 35px; height: 48px; flex: 0 0 auto; overflow: hidden; border-radius: 6px; background: #f4e7da; }
+    .chip-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .chip-copy { min-width: 0; }
+    .chip-number { display: block; margin-bottom: 4px; color: var(--orange); font-size: 9px; font-weight: 800; letter-spacing: .1em; }
+    .chip-name { display: block; overflow: hidden; color: #51473f; font-size: 11px; font-weight: 650; line-height: 1.25; text-overflow: ellipsis; }
+    .site-footer { max-width: 1220px; margin: 22px auto 0; display: flex; justify-content: space-between; gap: 20px; color: #9a8d81; font-size: 11px; }
+    .site-footer a { color: var(--forest); text-decoration: none; }
+    @media (max-width: 860px) {
+      main { padding-top: 38px; }
+      .intro { grid-template-columns: 1fr; gap: 15px; }
+      .screen-count { justify-self: start; }
+      .preview-shell { grid-template-columns: 1fr; }
+      .preview-copy { padding: 28px 30px; }
+      .preview-copy h2 { max-width: 550px; }
+      .preview-stage { min-height: 560px; }
+    }
+    @media (max-width: 540px) {
+      .site-header { height: 64px; padding: 0 20px; }
+      .header-note { font-size: 9px; letter-spacing: .08em; }
+      main { min-height: calc(100vh - 64px); padding: 31px 15px 25px; }
+      h1 { font-size: 42px; }
+      .lede { font-size: 13px; }
+      .preview-shell { border-radius: 22px; }
+      .preview-copy { padding: 25px 22px; }
+      .preview-stage { min-height: 505px; gap: 15px; padding: 24px 12px; }
+      .device { width: min(224px, 58vw); padding: 6px; border-radius: 31px; }
+      .device-screen { border-radius: 25px; }
+      .device-gloss { inset: 6px; border-radius: 26px; }
+      .stage-controls { width: 98px; gap: 9px; }
+      .stage-title { font-size: 16px; }
+      .stage-step { font-size: 9px; }
+      .arrow { width: 36px; height: 36px; }
+      .gallery-head { align-items: flex-start; flex-direction: column; }
+      .filters { max-width: 100%; }
+      .site-footer { flex-direction: column; gap: 7px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Savora home"><span class="brand-mark">S</span><span>Savora</span></a>
+    <span class="header-note">A little more joy in every order</span>
+  </header>
+  <main id="top">
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Savora · Mobile app concept</p>
+        <h1 id="page-title">Good food.<br>Made wonderfully simple.</h1>
+        <p class="lede">A thoughtful food ordering experience, from finding your next favourite to following every step of its journey home.</p>
+      </div>
+      <div class="screen-count"><strong>26</strong> designed screens</div>
+    </section>
+
+    <section class="preview-shell" aria-label="Interactive Savora screen preview">
+      <div class="preview-copy">
+        <p class="eyebrow">The Savora experience</p>
+        <h2 id="preview-heading">Find something delicious.</h2>
+        <p id="preview-description">Explore the app screen by screen. Choose a thumbnail or use the arrows to move through the journey.</p>
+        <span class="flow-label" id="flow-label">Discover & choose</span>
+      </div>
+      <div class="preview-stage">
+        <div class="device" aria-label="Phone preview">
+          <img class="device-screen" id="screen-image" src="Savora%20-%2007%20Home.png" alt="Savora home screen">
+          <span class="device-gloss" aria-hidden="true"></span>
+        </div>
+        <div class="stage-controls">
+          <span class="stage-step" id="stage-step">Screen 07 / 26</span>
+          <h3 class="stage-title" id="stage-title">Home</h3>
+          <div class="stage-arrows" aria-label="Preview navigation">
+            <button class="arrow" id="previous" aria-label="Previous screen">←</button>
+            <button class="arrow" id="next" aria-label="Next screen">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" aria-labelledby="gallery-title">
+      <div class="gallery-head">
+        <h2 id="gallery-title">Explore the screens</h2>
+        <div class="filters" role="group" aria-label="Filter screens by journey">
+          <button class="filter active" data-filter="all">All screens</button>
+          <button class="filter" data-filter="start">Getting started</button>
+          <button class="filter" data-filter="discover">Discover</button>
+          <button class="filter" data-filter="order">Your order</button>
+          <button class="filter" data-filter="after">After delivery</button>
+        </div>
+      </div>
+      <div class="screen-list" id="screen-list" aria-label="Savora screens"></div>
+    </section>
+    <footer class="site-footer">
+      <span>Designed with care for the joy of good food.</span>
+      <a href="https://github.com/Uzumakimayurkun11/Savoria_Eatery">View the project on GitHub ↗</a>
+    </footer>
+  </main>
+  <script>
+    const screens = [
+      ['01','Splash','start'],['02','Onboarding','start'],['03','Login and Sign up','start'],['04','OTP Verification','start'],['05','Delivery Address','start'],['06','Profile Setup','start'],
+      ['07','Home','discover'],['08','Search','discover'],['09','Search Results','discover'],['10','Filters and Sort','discover'],['11','Cuisine List','discover'],['12','Offers and coupons','discover'],['13','Map View','discover'],['14','Collections','discover'],['15','Restaurant Menu','discover'],['16','Item Customize','discover'],
+      ['17','Cart','order'],['18','Delivery Details','order'],['19','Select Address','order'],['20','Payment Method','order'],['21','Order Review','order'],['22','Order Confirmed','order'],['23','Live Order Tracking','order'],
+      ['24','Order Delivered','after'],['25','Rate & Review','after'],['26','Order History','after']
+    ].map(([number,name,group]) => ({number,name,group,file:`Savora - ${number} ${name}.png`}));
+    const copy = {
+      start: ['Your table is waiting.','A warm welcome, a quick sign-in and the details that make every delivery yours.','Get started'],
+      discover: ['Find something delicious.','Browse neighbourhood favourites, explore cuisines and make the next meal a good one.','Discover & choose'],
+      order: ['From your cart to your door.','Customise your meal, choose where it goes and follow your order along the way.','Order & delivery'],
+      after: ['Every good meal deserves a moment.','See the delivery through, share what you loved and find your past orders.','After delivery']
+    };
+    const image = document.getElementById('screen-image');
+    const list = document.getElementById('screen-list');
+    const filters = [...document.querySelectorAll('.filter')];
+    let activeScreen = 6;
+    let activeFilter = 'all';
+    function visibleScreens() { return screens.map((s,i)=>({...s,index:i})).filter(s=>activeFilter==='all'||s.group===activeFilter); }
+    function selectScreen(index) {
+      activeScreen = (index + screens.length) % screens.length;
+      const screen = screens[activeScreen], groupCopy = copy[screen.group];
+      image.src = encodeURI(screen.file);
+      image.alt = `Savora ${screen.number} ${screen.name} screen`;
+      document.getElementById('stage-step').textContent = `Screen ${screen.number} / 26`;
+      document.getElementById('stage-title').textContent = screen.name;
+      document.getElementById('preview-heading').textContent = groupCopy[0];
+      document.getElementById('preview-description').textContent = groupCopy[1];
+      document.getElementById('flow-label').textContent = groupCopy[2];
+      renderScreens();
+    }
+    function renderScreens() {
+      list.innerHTML = '';
+      visibleScreens().forEach(screen => {
+        const button = document.createElement('button');
+        button.className = `screen-chip${screen.index===activeScreen?' active':''}`;
+        button.setAttribute('aria-pressed', screen.index===activeScreen ? 'true' : 'false');
+        button.innerHTML = `<span class="chip-thumb"><img loading="lazy" src="${encodeURI(screen.file)}" alt=""></span><span class="chip-copy"><span class="chip-number">SCREEN ${screen.number}</span><span class="chip-name">${screen.name}</span></span>`;
+        button.addEventListener('click',()=>selectScreen(screen.index));
+        list.append(button);
+      });
+    }
+    document.getElementById('previous').addEventListener('click',()=>selectScreen(activeScreen-1));
+    document.getElementById('next').addEventListener('click',()=>selectScreen(activeScreen+1));
+    filters.forEach(button=>button.addEventListener('click',()=>{
+      activeFilter=button.dataset.filter;
+      filters.forEach(filter=>filter.classList.toggle('active',filter===button));
+      if(activeFilter!=='all'&&screens[activeScreen].group!==activeFilter){selectScreen(screens.findIndex(s=>s.group===activeFilter));}
+      else renderScreens();
+    }));
+    document.addEventListener('keydown',event=>{
+      if(event.key==='ArrowLeft') selectScreen(activeScreen-1);
+      if(event.key==='ArrowRight') selectScreen(activeScreen+1);
+    });
+    renderScreens();
+    selectScreen(activeScreen);
+  </script>
+</body>
+</html>
